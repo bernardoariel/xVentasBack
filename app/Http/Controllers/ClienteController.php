@@ -15,6 +15,16 @@ class ClienteController extends Controller
         return response()->json(Cliente::all(),200);
 
     }
+    public function getClienteById($id){
+
+        $cliente = Cliente::find($id);
+
+        if(is_null($cliente)){
+            return response()->json(['Mensaje'=>'Registro no encontrado'],404);
+        }
+
+        return response()->json($cliente::find($id),200);
+    }
 
     /**
      * Show the form for creating a new resource.
